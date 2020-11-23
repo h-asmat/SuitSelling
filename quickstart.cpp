@@ -1,8 +1,8 @@
  #include "simdjson.h"
-   int main(void) {
+ #include <string>
+   int main(int argc, char *argv[]) {
      simdjson::dom::parser parser;
-     simdjson::dom::element tweets
-       = parser.load("twitter.json");
-     std::cout << tweets["search_metadata"]["count"]
-       << " results." << std::endl;
+     std::string path(argv[1]);
+     simdjson::dom::element json = parser.load(path);
+     std::cout << json << std::endl;
    }
